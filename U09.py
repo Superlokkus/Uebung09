@@ -16,23 +16,30 @@ ogrenze = 10
 #1.
 def Mittelpunktregel(func,a,b,n=1000):
     """Gibt das numerische Integral der übergebenen Funktion von den Integrationsgrenzen a bis b zurück. 
-    Die Stützstellenzahl n kann optinal angegeben werden, standardmäßig verwendet wird 1000"""
+    Die Stützstellenzahl n kann optinal angegeben werden, standardmäßig verwendet wird 1000. Benutzt wird die Mittelpunktregel"""
     
     x = np.linspace(a,b,n+1)
-    
     mk_as = x[:-1]
     mk_bs = x[1:]
     
-    #func(((a + b) / 2)) * (b-a)
-    
     return np.sum(func(((mk_as + mk_bs) / 2)) * (mk_bs - mk_as))
     
+def Trapezregel(func,a,b,n=1000):
+    """Gibt das numerische Integral der übergebenen Funktion von den Integrationsgrenzen a bis b zurück. 
+    Die Stützstellenzahl n kann optinal angegeben werden, standardmäßig verwendet wird 1000. Benutzt wird die Trapezregel"""
     
-
+    x = np.linspace(a,b,n+1)
+    mk_as = x[:-1]
+    mk_bs = x[1:]
+        
+    return np.sum(((mk_bs - mk_as) / 2) * (func(mk_as) + func(mk_bs)))
+       
+    
 #2.
 for x in [10,100,1000]:
     print "Integrale mit " + str(x) + " Stützstellen:"
     print "Mithilfe der Mittelpunktregel: " + str(Mittelpunktregel(funktion,ugrenze,ogrenze,x))
+    print "Mithilfe der Trapezregel: " + str(Trapezregel(funktion,ugrenze,ogrenze,x))
 
 
 #3.
