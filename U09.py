@@ -22,3 +22,8 @@ print "Scipy Resultate:"
 print "Scipy.Integrate.Quad: " + str(scipy.integrate.quad(funktion,ugrenze,ogrenze))
 print "Scipy.Integrate.Trapz: " + str(scipy.integrate.trapz(y1000,dx=0.01))
 print "Scipy.Integrate.Simps: " + str(scipy.integrate.simps(y1000,dx=0.01))
+
+#4.
+plt.title("$f_{(x)}$")
+plt.plot(y1000,label="$f_{(x)}$")
+plt.show()
